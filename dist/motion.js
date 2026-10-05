@@ -45,6 +45,7 @@
 
   function scheduleSlides() {
     clearInterval(slideTimer);
+    root.classList.toggle('motion-paused', slideshowPaused || document.hidden);
     if (enabled && !slideshowPaused && !document.hidden) {
       slideTimer = setInterval(() => setSlide(slideIndex + 1), 20000);
     }
@@ -124,8 +125,12 @@
       const heroBounds = hero.getBoundingClientRect();
       const offset = Math.max(-1, Math.min(1, (innerHeight / 2 - heroBounds.top - heroBounds.height / 2) / heroBounds.height));
       root.style.setProperty('--hero-parallax', `${offset * 32}px`);
+      root.style.setProperty('--depth-side', `${offset * 55}px`);
+      root.style.setProperty('--depth-center', `${offset * -35}px`);
     } else {
       root.style.setProperty('--hero-parallax', '0px');
+      root.style.setProperty('--depth-side', '0px');
+      root.style.setProperty('--depth-center', '0px');
     }
     if (enabled && filmImage) {
       const filmBounds = filmImage.getBoundingClientRect();

@@ -22,7 +22,8 @@ Mobile and motion
 - The editorial visual layer is in editorial.css. Adjust its --paper, --ink,
   --taupe and --section-space variables for the palette and spacing; hero
   collage sizes and editorial typography are in the same stylesheet.
-- The supplied logo is used in the header and footer. The gallery includes ten
+- A responsive wordmark inspired by the supplied logo is used in the header and
+  footer. The gallery includes ten
   selected photographs, with their original proportions preserved. Mobile hero
   photographs use a three-column layout so faces do not overlap.
 - Gentle hero floating, gallery hover lifts and a film-button pulse supplement
