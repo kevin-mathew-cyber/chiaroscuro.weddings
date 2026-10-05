@@ -19,12 +19,18 @@ Mobile and motion
   prefers reduced motion.
 - Portfolio photographs have 540px, 810px and original 1080px JPEG sources.
   Smaller sources are selected by responsive srcset/sizes attributes.
+- The editorial visual layer is in editorial.css. Adjust its --paper, --ink,
+  --taupe and --section-space variables for the palette and spacing; hero
+  collage sizes and editorial typography are in the same stylesheet.
 
 Motion tuning
 In style.css, adjust --section-space for section spacing and --page-gutter for
 page margins. The responsive breakpoints are at 480px, 768px, 1024px and
 1280px. Adjust --duration-fast, --duration-reveal, --duration-slow, --ease and
 --reveal-distance in style.css to tune motion globally.
+The editorial collage entrance timing is set on the three .hero-slide rules in
+editorial.css; it uses the shared --ease curve and remains disabled when motion
+is off or reduced motion is preferred.
 
 Fonts load from Google Fonts when available, with local system fallbacks.
 Films and contact links open Instagram. The demo label is intentional; confirm
