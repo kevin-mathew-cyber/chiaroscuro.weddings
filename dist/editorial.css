@@ -321,3 +321,60 @@ dialog::backdrop { background: rgb(36 42 38 / 90%); }
   from { opacity: 0; filter: none; transform: translateY(10px); }
   to { opacity: 1; filter: none; transform: none; }
 }
+
+/* Preserve the supplied photographs: no forced square crops or overlapping faces. */
+.brand { display: block; flex-shrink: 0; }
+.brand img { display: block; width: 76px; height: 76px; object-fit: contain; }
+footer .brand img { width: 112px; height: 112px; }
+.hero-backdrop { grid-template-columns: 1fr 1.35fr 1fr; align-items: center; }
+.hero-slide, .hero-slide--two { height: auto; aspect-ratio: 4 / 5; opacity: 1; object-fit: contain; }
+.hero-slide.active { box-shadow: none; }
+.gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; column-gap: 8%; row-gap: 64px; }
+.photo, .photo.offset, .photo:nth-child(4n + 2) { min-width: 0; padding-top: 0; }
+.photo .photo-frame, .photo:nth-child(even) .photo-frame, .photo:nth-child(3n + 2) .photo-frame {
+  width: 100%; margin: 0; aspect-ratio: auto;
+}
+.photo-frame img { display: block; width: 100%; height: auto; object-fit: contain; }
+.motion-on .photo-frame img, .motion-on .photo.in-view .photo-frame img,
+.motion-on .photo:hover .photo-frame img { transform: none; }
+.photo-caption { min-height: 78px; }
+.film-image img { object-fit: contain; }
+
+/* A little movement around the photographs, without cropping their contents. */
+.motion-on .hero-slide--one, .motion-on .hero-slide--one.active {
+  animation: editorial-collage-arrive 950ms var(--ease) 80ms backwards, photo-float 8s ease-in-out 1s 3;
+}
+.motion-on .hero-slide--two, .motion-on .hero-slide--two.active {
+  animation: editorial-collage-arrive 950ms var(--ease) 300ms backwards, photo-float 9s ease-in-out 1.3s 3 reverse;
+}
+.motion-on .hero-slide--three, .motion-on .hero-slide--three.active {
+  animation: editorial-collage-arrive 950ms var(--ease) 520ms backwards, photo-float 8s ease-in-out 1.6s 3;
+}
+.motion-on .hero-backdrop { translate: 0 var(--hero-parallax, 0px); }
+.motion-on .photo .photo-frame { transition: clip-path 950ms var(--ease), translate 550ms var(--ease), box-shadow 550ms var(--ease); }
+.motion-on .play::after {
+  content: ''; position: absolute; inset: -9px; border: 1px solid rgb(255 255 255 / 60%);
+  border-radius: inherit; pointer-events: none;
+}
+.motion-on .film-image.in-view .play::after { animation: film-ring 3s ease-out 3; }
+@media (hover: hover) and (pointer: fine) {
+  .motion-on .photo:hover .photo-frame { translate: 0 -5px; box-shadow: 0 18px 35px rgb(48 52 44 / 12%); }
+}
+@media (max-width: 767px) {
+  .brand img { width: 62px; height: 62px; }
+  .hero-backdrop { display: grid; grid-template-columns: 1fr 1.25fr 1fr; gap: 8px; height: auto; margin: 0 var(--page-gutter); }
+  .hero-slide, .hero-slide--one, .hero-slide--two, .hero-slide--three {
+    position: relative; inset: auto; width: 100%; height: auto; aspect-ratio: 4 / 5; transform: none;
+  }
+  .gallery { grid-template-columns: 1fr; gap: 38px; padding: 0 var(--page-gutter); }
+  .photo { padding: 0; }
+  .photo-caption { min-height: 0; }
+}
+@keyframes photo-float { 0%, 100% { translate: 0 0; } 50% { translate: 0 -7px; } }
+@keyframes film-ring { from { scale: .96; opacity: .7; } to { scale: 1.2; opacity: 0; } }
+.motion-off .hero-backdrop, .motion-off .hero-slide, .motion-off .photo .photo-frame { translate: none; }
+.motion-off .play::after { display: none; }
+@media (prefers-reduced-motion: reduce) {
+  .motion-on .hero-backdrop, .motion-on .hero-slide, .motion-on .photo .photo-frame { translate: none !important; }
+  .motion-on .play::after { display: none; }
+}
