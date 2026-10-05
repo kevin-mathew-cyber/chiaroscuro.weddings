@@ -66,7 +66,9 @@
   document.addEventListener('visibilitychange', scheduleSlides);
 
   function updateStickyCta() {
-    stickyCta.hidden = !(innerWidth < 768 && heroPassed && !enquiryVisible);
+    // The mobile enquiry link now belongs to the document flow; it cannot
+    // obscure photography, fields, or the on-screen keyboard.
+    stickyCta.hidden = innerWidth >= 768;
   }
 
   function observePage() {

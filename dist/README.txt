@@ -23,9 +23,12 @@ Mobile and motion
   --taupe and --section-space variables for the palette and spacing; hero
   collage sizes and editorial typography are in the same stylesheet.
 - A responsive wordmark inspired by the supplied logo is used in the header and
-  footer. The gallery includes ten
-  selected photographs, with their original proportions preserved. Mobile hero
-  photographs use a three-column layout so faces do not overlap.
+  footer. The gallery includes ten selected photographs with their original
+  proportions preserved. Mobile hero photographs use one large image above
+  compact text, with photo controls.
+- The mobile enquiry link sits in the page flow before the contact section,
+  rather than covering content with a fixed bar. Section spacing, footer type,
+  field focus outlines and 44px photo controls are tuned for phone widths.
 - Gentle hero floating, gallery hover lifts and a film-button pulse supplement
   the scroll reveals. Motion: off and reduced-motion preferences disable them.
 

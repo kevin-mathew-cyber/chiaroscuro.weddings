@@ -27,7 +27,7 @@
   addEventListener('resize', () => {
     if (innerWidth >= 768 && menu.getAttribute('aria-expanded') === 'true') setMenuOpen(false, false);
     else {
-      navigation.inert = innerWidth < 768;
+      navigation.inert = innerWidth < 768 && menu.getAttribute('aria-expanded') !== 'true';
       navigation.setAttribute('aria-hidden', String(navigation.inert));
     }
   });
@@ -128,6 +128,11 @@
     }
     if (pointers.size === 0) {
       gestureStart = null;
+      pinchStart = 0;
+    } else if (pointers.size === 1) {
+      // Continue panning safely after one finger leaves a pinch gesture.
+      const remaining = [...pointers.values()][0];
+      gestureStart = { x: remaining.x, y: remaining.y };
       pinchStart = 0;
     }
   }

@@ -103,3 +103,42 @@ footer .brand .logo-top, footer .brand .logo-bottom { font-size: 58px; }
 @media (max-width: 767px) and (prefers-reduced-motion: reduce) {
   .motion-on .hero-backdrop { animation: none; }
 }
+
+@media (max-width: 767px) {
+  html { scroll-padding-top: 92px; }
+  .site-header { padding-left: max(var(--page-gutter), env(safe-area-inset-left)); padding-right: max(var(--page-gutter), env(safe-area-inset-right)); }
+  .hero .eyebrow { max-width: none; white-space: normal; }
+  .hero .slide-controls button { min-width: 44px; min-height: 44px; }
+  .section { padding-top: 56px; padding-bottom: 56px; }
+  .definition { padding-top: 52px; padding-bottom: 52px; }
+  .definition h2 { font-size: clamp(34px, 9.2vw, 42px); line-height: 1.12; }
+  .pronounce { font-size: 27px; }
+  .pronounce span { display: block; margin-top: 6px; }
+  .section-head { gap: 18px; margin-bottom: 28px; }
+  .section-head h2 { font-size: clamp(36px, 10vw, 44px); }
+  .gallery-bottom { gap: 16px; align-items: start; }
+  .gallery-bottom .text-link { min-height: 44px; }
+  .films { padding: 40px var(--page-gutter); gap: 28px; }
+  .film-copy h2 { font-size: clamp(40px, 11vw, 48px); }
+  .film-copy .text-link, .contact-copy .text-link { min-height: 44px; }
+  .steps h3 { font-size: 30px; }
+  .steps p { font-size: 14px; line-height: 1.65; }
+  .sticky-cta:not([hidden]) {
+    position: static; display: flex !important; width: auto; min-height: 46px;
+    margin: 0 var(--page-gutter) 24px; padding: 10px 16px;
+    border: 1px solid var(--line); border-radius: 2px; box-shadow: none;
+    background: var(--paper); color: var(--ink); font-size: 13px;
+    padding-bottom: max(10px, env(safe-area-inset-bottom));
+  }
+  .contact { padding-top: 40px; padding-bottom: 40px; }
+  #enquiry input, #enquiry textarea { scroll-margin-top: 104px; scroll-margin-bottom: 32px; }
+  #enquiry input:focus, #enquiry textarea:focus { background: rgb(255 255 255 / 45%); outline: 2px solid var(--taupe); outline-offset: 3px; }
+  #enquiry .form-row > label::after, #enquiry > label::after { bottom: 0; }
+  footer { grid-template-columns: minmax(0, 1fr) auto; gap: 20px 14px; padding-top: 32px; padding-bottom: max(32px, env(safe-area-inset-bottom)); }
+  footer .brand { width: 140px; max-width: 100%; }
+  footer .brand .logo-top, footer .brand .logo-bottom { font-size: 43px; }
+  footer > small { grid-column: 1 / -1; line-height: 1.6; }
+  dialog > img { flex: 1 1 auto; height: auto; max-height: 65svh; }
+  dialog > p { font-size: 24px; }
+  dialog > a { flex-shrink: 0; }
+}
